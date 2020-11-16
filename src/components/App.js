@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import AppRouter from "./Router";
+import AppRouter from "components/Router";
 import { authService } from "fbManager";
 
 function App() {
