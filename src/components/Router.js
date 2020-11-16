@@ -4,6 +4,7 @@ import Auth from "routes/Auth";
 import Home from "routes/Home";
 import Navigation from "./Navigation";
 import Profile from "routes/Profile";
+import JustinTimes from "routes/JustinTimes";
 
 const AppRouter = ({ isLoggedIn }) => {
   return (
@@ -17,6 +18,9 @@ const AppRouter = ({ isLoggedIn }) => {
             </Route>
             <Route exact path="/profile">
               <Profile />
+            </Route>
+            <Route exact path="/jcJustinTimes0627">
+              <JustinTimes />
             </Route>
           </>
         ) : (
