@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { dbService } from "fbManager";
 
 const JustinTimes = () => {
-  const [thetime, setTheTime] = useState("");
+  const [justinTime, setJustinTime] = useState("");
   const [times, setTimes] = useState([]);
   const getTimes = async () => {
     const dbTimes = await dbService.collection("times").get();
@@ -21,23 +21,23 @@ const JustinTimes = () => {
     // submit하면 document 생성
     event.preventDefault();
     await dbService.collection("times").add({
-      thetime,
+      justinTime,
       createdAt: Date.now(),
     });
-    setTheTime("");
+    setJustinTime("");
   };
   const onChange = (event) => {
     const {
       target: { value },
     } = event;
-    setTheTime(value);
+    setJustinTime(value);
   };
   console.log(times);
   return (
     <div>
       <form onSubmit={onSubmit}>
         <textarea
-          value={times}
+          value={justinTime}
           onChange={onChange}
           type="text"
           placeholder="what happened last month Justin??"
@@ -47,11 +47,11 @@ const JustinTimes = () => {
         <input type="submit" value="TimeUp" />
       </form>
       <div>
-        {times.map((thetime) => {
-          <div key={thetime.id}>
-            <h4>{thetime.thetime}</h4>
-          </div>;
-        })}
+        {times.map((justinTime) => (
+          <div key={justinTime.id}>
+            <h4>{justinTime.justinTime}</h4>
+          </div>
+        ))}
       </div>
     </div>
   );
