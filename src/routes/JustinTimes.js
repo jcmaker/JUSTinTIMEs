@@ -1,28 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fbManager";
 
-const JustinTimes = () => {
+const JustinTimes = ({ userObj }) => {
   const [justinTime, setJustinTime] = useState("");
   const [times, setTimes] = useState([]);
-  const getTimes = async () => {
-    const dbTimes = await dbService.collection("times").get();
-    dbTimes.forEach((document) => {
-      const timesObject = {
-        ...document.data(),
-        id: document.id,
-      };
-      setTimes((prev) => [timesObject, ...prev]);
-    });
-  };
   useEffect(() => {
-    getTimes();
+    dbService.collection("times").onSnapshot((snapshot) => {
+      const timesArray = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setTimes(timesArray);
+    });
   }, []);
   const onSubmit = async (event) => {
     // submit하면 document 생성
     event.preventDefault();
     await dbService.collection("times").add({
-      justinTime,
+      text: justinTime,
       createdAt: Date.now(),
+      creatorId: userObj.uid,
     });
     setJustinTime("");
   };
@@ -32,7 +29,7 @@ const JustinTimes = () => {
     } = event;
     setJustinTime(value);
   };
-  console.log(times);
+  console.log(userObj);
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -43,13 +40,14 @@ const JustinTimes = () => {
           placeholder="what happened last month Justin??"
           maxLength={1200}
           //   글자수 세는 기능 넣기
+          //   띄워쓰기, 한칸비우기 입력 넣기
         />
         <input type="submit" value="TimeUp" />
       </form>
       <div>
         {times.map((justinTime) => (
           <div key={justinTime.id}>
-            <h4>{justinTime.justinTime}</h4>
+            <h4>{justinTime.text}</h4>
           </div>
         ))}
       </div>

@@ -11,6 +11,9 @@ const Navigation = () => {
         <li>
           <Link to="/profile">My Profile</Link>
         </li>
+        <li>
+          <Link to="/jcJustinTimes0627">come here justin</Link>
+        </li>
       </ul>
     </nav>
   );
