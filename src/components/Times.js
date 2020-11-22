@@ -44,6 +44,7 @@ const Times = ({ timeObj, isOwner }) => {
         <>
           <h3>{timeObj.title}</h3>
           <h4>{timeObj.text}</h4>
+          <h6>{timeObj.createdAt}</h6>
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete</button>

@@ -17,12 +17,18 @@ const JustinTimes = ({ userObj }) => {
     });
   }, []);
   const onSubmit = async (event) => {
+    const date = new Date();
+    const thisYear = date.getFullYear();
+    const thisMonth = date.getMonth() + 1;
+    const todayDate = date.getDate();
+    const uploadDate = thisYear + "/ " + thisMonth + "/ " + todayDate;
+    console.log(thisMonth + "/" + todayDate);
     // submit하면 document 생성
     event.preventDefault();
     await dbService.collection("times").add({
       text: justinTime,
       title: mainTitle,
-      createdAt: Date.now(),
+      createdAt: uploadDate,
       creatorId: userObj.uid,
     });
     setJustinTime("");
