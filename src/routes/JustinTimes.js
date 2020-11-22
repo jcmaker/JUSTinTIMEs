@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { dbService } from "fbManager";
+import Times from "components/Times";
 
 const JustinTimes = ({ userObj }) => {
   const [justinTime, setJustinTime] = useState("");
@@ -46,9 +47,11 @@ const JustinTimes = ({ userObj }) => {
       </form>
       <div>
         {times.map((justinTime) => (
-          <div key={justinTime.id}>
-            <h4>{justinTime.text}</h4>
-          </div>
+          <Times
+            key={justinTime.id}
+            timeObj={justinTime}
+            isOwner={justinTime.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>

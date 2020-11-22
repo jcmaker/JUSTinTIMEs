@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import OnlyJustin from "./OnlyJustin";
+import JustinUID from "JustinUid";
 
-const Navigation = () => {
+const Navigation = ({ userObj }) => {
+  const isJustin = JustinUID;
+
   return (
     <nav>
       <ul>
@@ -11,10 +15,8 @@ const Navigation = () => {
         <li>
           <Link to="/profile">My Profile</Link>
         </li>
-        <li>
-          <Link to="/jcJustinTimes0627">come here justin</Link>
-        </li>
       </ul>
+      <OnlyJustin isOwner={isJustin === userObj.uid} />
     </nav>
   );
 };
