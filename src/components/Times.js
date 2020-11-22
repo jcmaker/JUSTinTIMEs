@@ -42,6 +42,7 @@ const Times = ({ timeObj, isOwner }) => {
         </>
       ) : (
         <>
+          <h3>{timeObj.title}</h3>
           <h4>{timeObj.text}</h4>
           {isOwner && (
             <>
