@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { dbService } from "fbManager";
+import { v4 as uuidv4 } from "uuid";
+import { dbService, storageService } from "fbManager";
 import Times from "components/Times";
 
 const JustinTimes = ({ userObj }) => {
@@ -17,22 +18,34 @@ const JustinTimes = ({ userObj }) => {
     });
   }, []);
   const onSubmit = async (event) => {
+    // submit하면 document 생성
     const date = new Date();
     const thisYear = date.getFullYear();
     const thisMonth = date.getMonth() + 1;
     const todayDate = date.getDate();
     const uploadDate = thisYear + "/ " + thisMonth + "/ " + todayDate;
     console.log(thisMonth + "/" + todayDate);
-    // submit하면 document 생성
     event.preventDefault();
-    await dbService.collection("times").add({
+    let attachmentUrl = "";
+    if (attachment !== "") {
+      const attachmentRef = storageService
+        .ref()
+        .child(`${userObj.uid}/${uuidv4()}`);
+      const response = await attachmentRef.putString(attachment, "data_url");
+      attachmentUrl = await response.ref.getDownloadURL();
+    }
+    const timeObj = {
       text: justinTime,
       title: mainTitle,
-      createdAt: uploadDate,
+      createdAt: Date.now(),
+      createdTime: uploadDate,
       creatorId: userObj.uid,
-    });
+      attachmentUrl,
+    };
+    await dbService.collection("times").add(timeObj);
     setJustinTime("");
     setMainTitle("");
+    setAttachment("");
   };
   const onChange = (event) => {
     const {

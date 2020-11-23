@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dbService } from "fbManager";
+import { dbService, storageService } from "fbManager";
 
 const Times = ({ timeObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -8,6 +8,7 @@ const Times = ({ timeObj, isOwner }) => {
     const ok = window.confirm("Are you sure you want to delete this Times?");
     if (ok) {
       await dbService.doc(`times/${timeObj.id}`).delete();
+      await storageService.refFromURL(timeObj.attachmentUrl).delete();
     }
   };
   const toggleEditing = () => setEditing((prev) => !prev);
@@ -43,8 +44,16 @@ const Times = ({ timeObj, isOwner }) => {
       ) : (
         <>
           <h3>{timeObj.title}</h3>
+          {timeObj.attachmentUrl && (
+            <img
+              src={timeObj.attachmentUrl}
+              width="auto"
+              height="250px"
+              alt="img"
+            />
+          )}
           <h4>{timeObj.text}</h4>
-          <h6>{timeObj.createdAt}</h6>
+          <h6>{timeObj.createdTime}</h6>
           {isOwner && (
             <>
               <button onClick={onDeleteClick}>Delete</button>

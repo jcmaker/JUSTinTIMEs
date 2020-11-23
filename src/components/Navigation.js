@@ -13,7 +13,10 @@ const Navigation = ({ userObj }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/profile">My Profile</Link>
+          <Link to="/profile">
+            <img src={userObj.photoURL} width="100px" height="100px" />
+            {userObj.displayName}'s Profile
+          </Link>
         </li>
       </ul>
       <OnlyJustin isOwner={isJustin === userObj.uid} />
