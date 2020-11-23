@@ -25,6 +25,7 @@ const Times = ({ timeObj, isOwner }) => {
     } = event;
     setNewTimes(value);
   };
+  console.log(timeObj.text.replace("<br>", "\n"));
   return (
     <div>
       {editing ? (
@@ -52,7 +53,7 @@ const Times = ({ timeObj, isOwner }) => {
               alt="img"
             />
           )}
-          <h4>{timeObj.text}</h4>
+          <h4>{timeObj.text.replace("<br>", "new line plz")}</h4>
           <h6>{timeObj.createdTime}</h6>
           {isOwner && (
             <>

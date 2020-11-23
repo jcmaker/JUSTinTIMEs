@@ -19,6 +19,7 @@ function App() {
   }, []);
   return (
     <>
+      <div>JUSTinTIMEs</div>
       {init ? (
         <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
       ) : (
