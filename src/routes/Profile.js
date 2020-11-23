@@ -18,7 +18,7 @@ const Profile = ({ userObj }) => {
   };
   useEffect(() => {
     getMyTimes();
-  }, []);
+  });
   console.log(userObj);
   return (
     <>

@@ -74,7 +74,11 @@ const JustinTimes = ({ userObj }) => {
     reader.readAsDataURL(theFile);
   };
   const onDeleteAttachment = () => setAttachment(null);
+  const timesCounter = () => {
+    // console.log(justinTime.length);
+  };
 
+  timesCounter();
   return (
     <div>
       <form onSubmit={onSubmit}>
@@ -84,11 +88,12 @@ const JustinTimes = ({ userObj }) => {
           value={mainTitle}
           onChange={onChangeTitle}
         />
+        <h3>{justinTime.length} / 1200</h3>
         <textarea
           value={justinTime}
           onChange={onChange}
           type="text"
-          placeholder="what happened last month Justin??"
+          placeholder="what happened last month Justin?? word"
           width="600px"
           height="1200px"
           maxLength={1200}
