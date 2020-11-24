@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbManager";
 
-const Times = ({ timeObj, isOwner }) => {
+const Times = ({ timeObj, isOwner, userObj }) => {
   const [editing, setEditing] = useState(false);
   const [newTimes, setNewTimes] = useState(timeObj.text);
   const onDeleteClick = async () => {
@@ -25,7 +25,6 @@ const Times = ({ timeObj, isOwner }) => {
     } = event;
     setNewTimes(value);
   };
-  // console.log(timeObj.text);
   return (
     <div>
       {editing ? (
@@ -44,23 +43,25 @@ const Times = ({ timeObj, isOwner }) => {
         </>
       ) : (
         <>
-          <h3>{timeObj.title}</h3>
-          {timeObj.attachmentUrl && (
-            <img
-              src={timeObj.attachmentUrl}
-              width="auto"
-              height="250px"
-              alt="img"
-            />
-          )}
-          <pre>{timeObj.text}</pre>
-          <h6>{timeObj.createdTime}</h6>
-          {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete</button>
-              <button onClick={toggleEditing}>Edit</button>
-            </>
-          )}
+          <div>
+            <h3>{timeObj.title}</h3>
+            {timeObj.attachmentUrl && (
+              <img
+                src={timeObj.attachmentUrl}
+                width="auto"
+                height="250px"
+                alt="img"
+              />
+            )}
+            <pre>{timeObj.text}</pre>
+            <h6>{timeObj.createdTime}</h6>
+            {isOwner && (
+              <>
+                <button onClick={onDeleteClick}>Delete</button>
+                <button onClick={toggleEditing}>Edit</button>
+              </>
+            )}
+          </div>
         </>
       )}
     </div>

@@ -6,8 +6,8 @@ import Times from "components/Times";
 const JustinTimes = ({ userObj }) => {
   const [justinTime, setJustinTime] = useState("");
   const [mainTitle, setMainTitle] = useState("");
-  const [times, setTimes] = useState([]);
   const [attachment, setAttachment] = useState("");
+  const [times, setTimes] = useState([]);
   useEffect(() => {
     dbService.collection("times").onSnapshot((snapshot) => {
       const timesArray = snapshot.docs.map((doc) => ({
@@ -74,11 +74,7 @@ const JustinTimes = ({ userObj }) => {
     reader.readAsDataURL(theFile);
   };
   const onDeleteAttachment = () => setAttachment(null);
-  const timesCounter = () => {
-    // console.log(justinTime.length);
-  };
 
-  timesCounter();
   return (
     <div>
       <form onSubmit={onSubmit}>
