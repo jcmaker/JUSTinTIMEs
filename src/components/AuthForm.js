@@ -36,29 +36,40 @@ const AuthFrom = () => {
   const toggleAccount = () => setNewAccount((prev) => !prev);
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          name="email"
-          type="text"
-          placeholder="Email-Address"
-          required
-          value={email}
-          onChange={onChange}
-        />
-        <input
-          name="password"
-          type="password"
-          placeholder="Password"
-          required
-          value={password}
-          onChange={onChange}
-        />
-        <input type="submit" value={newAccount ? "Create Account" : "Login"} />
-        {error}
-      </form>
-      <span onClick={toggleAccount}>
-        {newAccount ? "Login" : "Create Account"}
-      </span>
+      <div className="loginPage">
+        <div className="login">
+          <form onSubmit={onSubmit} className="login_form">
+            <span className="login_form_span">Login</span>
+            <input
+              className="login_form_input"
+              name="email"
+              type="text"
+              placeholder="Email-Address"
+              required
+              value={email}
+              onChange={onChange}
+            />
+            <input
+              className="login_form_input"
+              name="password"
+              type="password"
+              placeholder="Password"
+              required
+              value={password}
+              onChange={onChange}
+            />
+            <input
+              className="login_form_btn"
+              type="submit"
+              value={newAccount ? "Create Account" : "Login"}
+            />
+            {error}
+          </form>
+          <span onClick={toggleAccount} className="login_form_toggle">
+            {newAccount ? ">> I want to Login" : ">> I want to Create Account"}
+          </span>
+        </div>
+      </div>
     </>
   );
 };

@@ -4,6 +4,7 @@ import Times from "components/Times";
 
 const Home = ({ userObj }) => {
   const [times, setTimes] = useState([]);
+  const [loadTimes, setLoadTimes] = useState(3);
   useEffect(() => {
     dbService.collection("times").onSnapshot((snapshot) => {
       const timesArray = snapshot.docs.map((doc) => ({
@@ -13,17 +14,24 @@ const Home = ({ userObj }) => {
       setTimes(timesArray);
     });
   }, []);
-
+  const LoadMoreTimes = () => {
+    setLoadTimes((prevValue) => prevValue + 3);
+  };
   return (
     <div>
       <div>
-        {times.map((justinTime) => (
+        {times.slice(0, loadTimes).map((justinTime) => (
           <Times
             key={justinTime.id}
             timeObj={justinTime}
             isOwner={justinTime.creatorId === userObj.uid}
           />
         ))}
+      </div>
+      <div className="load-more">
+        <button onClick={LoadMoreTimes} className="load-more__btn">
+          》》 Load More
+        </button>
       </div>
     </div>
   );

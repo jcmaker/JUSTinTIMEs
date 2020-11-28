@@ -1,9 +1,16 @@
 @import "reset.css";
 
 /* components CSS */
+@import "login.css";
+@import "profile.css";
+@import "justinTimes.css";
+@import "Times.css";
+@import "Home.css";
+@import "Contact.css";
 
 /* screens CSS */
 @import "header.css";
+@import "footer.css";
 
 body {
   height: 140vh;

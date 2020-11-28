@@ -1,0 +1,8 @@
+.load-more {
+  display: flex;
+  justify-content: center;
+}
+
+.load-more__btn {
+  margin-top: 20px;
+}

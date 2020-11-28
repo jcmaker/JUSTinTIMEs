@@ -9,21 +9,33 @@
 .header__top {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   border-bottom: 1px solid rgba(100, 100, 100, 0.3);
 }
 .header__title {
+  width: 33.3%;
   font-size: 48px;
+  display: flex;
+  justify-content: center;
 }
-.header__date,
-.header__sub {
+.header__date {
+  width: 33.3%;
   font-size: 12px;
   bottom: 0;
   padding-top: 30px;
+  display: flex;
+  justify-content: flex-start;
+}
+.header__sub {
+  width: 33.3%;
+  font-size: 12px;
+  bottom: 0;
+  padding-top: 30px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .header__middle {
-  margin-top: 10px;
   display: flex;
   width: 50%;
   justify-content: space-between;
@@ -41,14 +53,14 @@
   border-bottom: 2px solid rgba(100, 100, 100, 0.6);
 }
 .topic {
-  width: 60%;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .clock,
 .weather {
-  width: 20%;
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;

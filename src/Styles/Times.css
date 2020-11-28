@@ -1,0 +1,48 @@
+.main {
+  width: 70%;
+  margin: auto;
+  margin-top: 15px;
+  border-bottom: 1px solid rgba(50, 50, 50, 0.3);
+  margin-bottom: 15px;
+}
+
+.times_title {
+  font-size: 30px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+}
+
+.times_detail {
+  margin: 10px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: rgba(100, 100, 100, 0.5);
+}
+
+.times_img-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.times_body {
+  margin: auto;
+  margin-top: 10px;
+  width: 100%;
+  text-align: justify;
+  margin-bottom: 30px;
+}
+
+.times_image {
+  object-fit: contain;
+  max-width: 800px;
+  max-height: 700px;
+  width: 100%;
+  height: auto;
+}
+
+pre {
+  white-space: pre-wrap;
+}

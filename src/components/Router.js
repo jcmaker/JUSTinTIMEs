@@ -5,6 +5,9 @@ import Home from "routes/Home";
 import Navigation from "./Navigation";
 import Profile from "routes/Profile";
 import JustinTimes from "routes/JustinTimes";
+import Contact from "routes/Contact";
+import AboutMe from "routes/AboutMe";
+import Projects from "routes/Projects";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   return (
@@ -21,6 +24,15 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             </Route>
             <Route exact path="/jcJustinTimes0627">
               <JustinTimes userObj={userObj} />
+            </Route>
+            <Route exact path="/ContactJustin">
+              <Contact />
+            </Route>
+            <Route exact path="/AboutJustin">
+              <AboutMe />
+            </Route>
+            <Route exact path="/Projects">
+              <Projects />
             </Route>
           </>
         ) : (

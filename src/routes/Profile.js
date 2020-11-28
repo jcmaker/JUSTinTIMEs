@@ -38,16 +38,33 @@ const Profile = ({ refreshUser, userObj }) => {
   console.log(userObj);
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder={userObj.displayName}
-          onChange={onChange}
-          value={newDisplayName}
-        />
-        <input type="submit" value="Update my name" />
-      </form>
-      <button onClick={onLogOutClick}>Logout</button>
+      <div className="profile">
+        <div className="profile__main">
+          <img src={userObj.photoURL} alt="" className="profile__main-img" />
+          <span className="profile__main-text">
+            <h2>{userObj.displayName}</h2>
+          </span>
+        </div>
+        <div className="profile__form">
+          <form onSubmit={onSubmit} className="profile__form-form">
+            <input
+              type="text"
+              placeholder={userObj.displayName}
+              onChange={onChange}
+              value={newDisplayName}
+              className="profile__form-text"
+            />
+            <input
+              type="submit"
+              value="Update my name"
+              className="profile__form-btn"
+            />
+          </form>
+          <button onClick={onLogOutClick} className="logout-btn">
+            Logout
+          </button>
+        </div>
+      </div>
     </>
   );
 };

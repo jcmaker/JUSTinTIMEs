@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbManager";
 
-const Times = ({ timeObj, isOwner, userObj }) => {
+const Times = ({ timeObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
   const [newTimes, setNewTimes] = useState(timeObj.text);
   const onDeleteClick = async () => {
@@ -43,18 +43,24 @@ const Times = ({ timeObj, isOwner, userObj }) => {
         </>
       ) : (
         <>
-          <div>
-            <h3>{timeObj.title}</h3>
-            {timeObj.attachmentUrl && (
-              <img
-                src={timeObj.attachmentUrl}
-                width="auto"
-                height="250px"
-                alt="img"
-              />
-            )}
-            <pre>{timeObj.text}</pre>
-            <h6>{timeObj.createdTime}</h6>
+          <div className="main">
+            <span className="times_title">
+              <h3>{timeObj.title}</h3>
+            </span>
+            <span className="times_detail">
+              <h6>{timeObj.createdTime}</h6>
+              <h6>Justin Cho</h6>
+            </span>
+            <div className="times_img-text">
+              {timeObj.attachmentUrl && (
+                <img
+                  className="times_image"
+                  src={timeObj.attachmentUrl}
+                  alt="img"
+                />
+              )}
+              <pre className="times_body">{timeObj.text}</pre>
+            </div>
             {isOwner && (
               <>
                 <button onClick={onDeleteClick}>Delete</button>

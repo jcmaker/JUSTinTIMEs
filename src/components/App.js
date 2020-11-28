@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fbManager";
 import Header from "routes/Header";
+import Footer from "routes/footer";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -12,6 +13,8 @@ function App() {
         setUserObj({
           displayName: user.displayName,
           uid: user.uid,
+          photoURL: user.photoURL,
+          updateProfile: (args) => user.updateProfile(args),
         });
       } else {
         setUserObj(null);
@@ -40,7 +43,7 @@ function App() {
       ) : (
         "Initalizing. . ."
       )}
-      <footer>&copy; JUSTinTIMEs {new Date().getFullYear()}</footer>
+      <Footer />
     </>
   );
 }

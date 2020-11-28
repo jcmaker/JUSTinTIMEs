@@ -20,16 +20,28 @@ const Auth = () => {
   };
 
   return (
-    <div>
+    <div className="auth-form">
       <AuthForm />
-      <div>
-        <button onClick={onSocialClick} name="google">
+      <div className="auth-form__social">
+        <button
+          onClick={onSocialClick}
+          name="google"
+          className="auth-form__social_btn ggl"
+        >
           Continue with Google
         </button>
-        <button onClick={onSocialClick} name="facebook">
+        <button
+          onClick={onSocialClick}
+          name="facebook"
+          className="auth-form__social_btn fcb"
+        >
           Continue with Facebook
         </button>
-        <button onClick={onSocialClick} name="github">
+        <button
+          onClick={onSocialClick}
+          name="github"
+          className="auth-form__social_btn ghb"
+        >
           Continue with Github
         </button>
       </div>

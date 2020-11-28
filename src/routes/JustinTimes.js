@@ -8,14 +8,18 @@ const JustinTimes = ({ userObj }) => {
   const [mainTitle, setMainTitle] = useState("");
   const [attachment, setAttachment] = useState("");
   const [times, setTimes] = useState([]);
+
   useEffect(() => {
-    dbService.collection("times").onSnapshot((snapshot) => {
-      const timesArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setTimes(timesArray);
-    });
+    dbService
+      .collection("times")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const timesArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTimes(timesArray);
+      });
   }, []);
   const onSubmit = async (event) => {
     // submit하면 document 생성
@@ -76,35 +80,46 @@ const JustinTimes = ({ userObj }) => {
   const onDeleteAttachment = () => setAttachment(null);
 
   return (
-    <div>
-      <form onSubmit={onSubmit}>
+    <div className="justin-times">
+      <form onSubmit={onSubmit} className="justin-times__form">
         <input
           type="text"
           placeholder="Main Title"
           value={mainTitle}
           onChange={onChangeTitle}
+          className="justin-times__title"
         />
-        <h3>{justinTime.length} / 1200</h3>
         <textarea
           value={justinTime}
           onChange={onChange}
           type="text"
-          placeholder="what happened last month Justin?? word"
-          width="600px"
-          height="1200px"
-          maxLength={1200}
+          placeholder="what happened last month Justin??"
+          maxLength={1300}
           //   글자수 세는 기능 넣기
           //   띄워쓰기, 한칸비우기 입력 넣기
-          style={{ width: "500px", height: "600px" }}
+          className="justin-times__textarea"
         />
-        <input type="file" accept="image/*" onChange={onFileChange} />
-        <input type="submit" value="TimeUp" />
+        <h3>
+          <span className="textarea-counter">{justinTime.length}</span> / 1300
+        </h3>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={onFileChange}
+          className="justin-times__file-select"
+        />
         {attachment && (
-          <div>
-            <img src={attachment} width="auto" height="400px" alt="img" />
-            <button onClick={onDeleteAttachment}>Cancel Image</button>
+          <div className="justin-times__when-file">
+            <img src={attachment} alt="img" className="justin-times__file" />
+            <button
+              onClick={onDeleteAttachment}
+              className="justin-times__cancel-img"
+            >
+              Cancel Image
+            </button>
           </div>
         )}
+        <input type="submit" value="Times Upload" className="TimeUp" />
       </form>
       <div>
         {times.map((justinTime) => (

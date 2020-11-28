@@ -1,0 +1,53 @@
+.justin-times {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.justin-times__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.justin-times__title {
+  height: 30px;
+}
+
+.justin-times__textarea {
+  width: 500px;
+  height: 600px;
+  resize: none;
+  margin-top: 10px;
+}
+
+.textarea-counter {
+  color: tomato;
+}
+
+.justin-times__when-file {
+  margin-bottom: 20px;
+}
+
+.justin-times__file {
+  width: auto;
+  height: 400px;
+}
+
+.justin-times__cancel-img {
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 2px;
+  height: 30px;
+}
+
+.TimeUp {
+  background-color: #02c29b;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 50px;
+  margin-top: 50px;
+  font-size: 20px;
+}
