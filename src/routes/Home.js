@@ -6,13 +6,16 @@ const Home = ({ userObj }) => {
   const [times, setTimes] = useState([]);
   const [loadTimes, setLoadTimes] = useState(3);
   useEffect(() => {
-    dbService.collection("times").onSnapshot((snapshot) => {
-      const timesArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setTimes(timesArray);
-    });
+    dbService
+      .collection("times")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const timesArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setTimes(timesArray);
+      });
   }, []);
   const LoadMoreTimes = () => {
     setLoadTimes((prevValue) => prevValue + 3);
