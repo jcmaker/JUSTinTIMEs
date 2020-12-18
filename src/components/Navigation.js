@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import OnlyJustin from "./OnlyJustin";
 import JustinUID from "JustinUid";
+import { Avatar } from "@material-ui/core";
 
 const Navigation = ({ userObj }) => {
   const isJustin = JustinUID;
@@ -49,8 +50,9 @@ const Navigation = ({ userObj }) => {
             <div>weather</div>
           </div>
           <div className="topic">
-            <Link to="/profile">
-              <img src={userObj.photoURL} width="30px" height="30px" alt="" />
+            <Link to="/profile" className="topic__info">
+              <Avatar src={userObj.photoURL} />
+              {/* <img src={userObj.photoURL} width="30px" height="30px" alt="" /> */}
               <span>{userObj.displayName}</span>
             </Link>
             <OnlyJustin isOwner={isJustin === userObj.uid} />

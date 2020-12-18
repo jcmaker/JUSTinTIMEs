@@ -4,7 +4,7 @@ import { authService } from "fbManager";
 import Header from "routes/Header";
 import Footer from "routes/footer";
 
-function App() {
+function App({ timeObj }) {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
   useEffect(() => {
@@ -39,6 +39,7 @@ function App() {
           refreshUser={refreshUser}
           isLoggedIn={Boolean(userObj)}
           userObj={userObj}
+          timeObj={timeObj}
         />
       ) : (
         "Initalizing. . ."

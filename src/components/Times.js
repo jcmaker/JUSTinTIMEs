@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbManager";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const Times = ({ timeObj, isOwner }) => {
   const [editing, setEditing] = useState(false);
@@ -25,8 +27,9 @@ const Times = ({ timeObj, isOwner }) => {
     } = event;
     setNewTimes(value);
   };
+  console.log(timeObj.id);
   return (
-    <div>
+    <div className="third-main">
       {editing ? (
         <>
           <form onSubmit={onSubmit}>
@@ -63,8 +66,12 @@ const Times = ({ timeObj, isOwner }) => {
             </div>
             {isOwner && (
               <>
-                <button onClick={onDeleteClick}>Delete</button>
-                <button onClick={toggleEditing}>Edit</button>
+                <button onClick={onDeleteClick}>
+                  <DeleteIcon />
+                </button>
+                <button onClick={toggleEditing}>
+                  <EditIcon />
+                </button>
               </>
             )}
           </div>

@@ -8,8 +8,9 @@ import JustinTimes from "routes/JustinTimes";
 import Contact from "routes/Contact";
 import AboutMe from "routes/AboutMe";
 import Projects from "routes/Projects";
+// import { dbService } from "fbManager";
 
-const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
+const AppRouter = ({ refreshUser, isLoggedIn, userObj, timeObj }) => {
   return (
     <Router>
       {isLoggedIn && <Navigation userObj={userObj} />}
@@ -34,6 +35,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             <Route exact path="/Projects">
               <Projects />
             </Route>
+            {/* <Route exact path={`/${timeObj.id}`}>
+              <AnchorTimes />
+            </Route> */}
           </>
         ) : (
           <>

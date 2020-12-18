@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "fbManager";
 import Times from "components/Times";
+import AppRouter from "components/Router";
 
 const JustinTimes = ({ userObj }) => {
   const [justinTime, setJustinTime] = useState("");
@@ -28,7 +29,7 @@ const JustinTimes = ({ userObj }) => {
     const thisMonth = date.getMonth() + 1;
     const todayDate = date.getDate();
     const uploadDate = thisYear + "/ " + thisMonth + "/ " + todayDate;
-    console.log(thisMonth + "/" + todayDate);
+    // console.log(thisMonth + "/" + todayDate);
     event.preventDefault();
     let attachmentUrl = "";
     if (attachment !== "") {
@@ -78,7 +79,6 @@ const JustinTimes = ({ userObj }) => {
     reader.readAsDataURL(theFile);
   };
   const onDeleteAttachment = () => setAttachment(null);
-
   return (
     <div className="justin-times">
       <form onSubmit={onSubmit} className="justin-times__form">
@@ -128,6 +128,9 @@ const JustinTimes = ({ userObj }) => {
             timeObj={justinTime}
             isOwner={justinTime.creatorId === userObj.uid}
           />
+        ))}
+        {times.map((justinTime) => (
+          <AppRouter timeObj={justinTime} />
         ))}
       </div>
     </div>
