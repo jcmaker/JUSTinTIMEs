@@ -8,6 +8,7 @@ import JustinTimes from "routes/JustinTimes";
 import Contact from "routes/Contact";
 import AboutMe from "routes/AboutMe";
 import Projects from "routes/Projects";
+
 // import { dbService } from "fbManager";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj, timeObj }) => {

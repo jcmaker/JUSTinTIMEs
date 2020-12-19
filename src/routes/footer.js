@@ -1,4 +1,9 @@
 import React from "react";
+import LanguageIcon from "@material-ui/icons/Language";
+import FacebookIcon from "@material-ui/icons/Facebook";
+import InstagramIcon from "@material-ui/icons/Instagram";
+import GitHubIcon from "@material-ui/icons/GitHub";
+import AccessAlarmsIcon from "@material-ui/icons/AccessAlarms";
 
 const Footer = () => {
   return (
@@ -10,24 +15,24 @@ const Footer = () => {
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fab fa-facebook-square"></i>
+            <FacebookIcon />
           </a>
           <a
             href="https://www.instagram.com/jcmaker0627/"
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fab fa-instagram"></i>
+            <InstagramIcon />
           </a>
           <a href="https://github.com/jcmaker" target="_blank" rel="noreferrer">
-            <i className="fab fa-github-square"></i>
+            <GitHubIcon />
           </a>
           <a
             href="https://wakatime.com/@jcmaker0627"
             target="_blank"
             rel="noreferrer"
           >
-            <i className="fas fa-clock"></i>
+            <AccessAlarmsIcon />
           </a>
         </div>
         <div className="footer__shortcut">
@@ -36,42 +41,26 @@ const Footer = () => {
           </div>
           <div className="shortcut__column">
             <h2>About Me</h2>
-            <span>profile photo</span>
-            <span>name</span>
-            <span>age</span>
-            <span>story</span>
           </div>
           <div className="shortcut__column">
             <h2>Contact</h2>
-            <span>instagram</span>
-            <span>facebook</span>
-            <span>github</span>
-            <span>wakatime</span>
-            <span>Gmail</span>
           </div>
           <div className="shortcut__column">
             <h2>Projects</h2>
-            <span>movie-app-2020</span>
-            <span>kakaotalk clone</span>
-            <span>Lipton</span>
-            <span>YouTube clone</span>
           </div>
         </div>
         <div className="below__footer">
           <div className="below__links">
-            <span>&copy;JUSTinTIMEs by jcmaker0627 2020</span>
-            <span>Contact Me</span>
+            <span>&copy;JUSTinTIMEs 2020</span>
             <span>
               <a
                 href="https://www.nytimes.com/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Cloned site
+                <LanguageIcon />
               </a>
             </span>
-            <span>Update date</span>
-            <span></span>
           </div>
         </div>
       </div>

@@ -27,7 +27,6 @@ const Times = ({ timeObj, isOwner }) => {
     } = event;
     setNewTimes(value);
   };
-  console.log(timeObj.id);
   return (
     <div className="third-main">
       {editing ? (
@@ -66,12 +65,14 @@ const Times = ({ timeObj, isOwner }) => {
             </div>
             {isOwner && (
               <>
-                <button onClick={onDeleteClick}>
-                  <DeleteIcon />
-                </button>
-                <button onClick={toggleEditing}>
-                  <EditIcon />
-                </button>
+                <div className="is_owner">
+                  <button onClick={onDeleteClick}>
+                    <DeleteIcon />
+                  </button>
+                  <button onClick={toggleEditing}>
+                    <EditIcon />
+                  </button>
+                </div>
               </>
             )}
           </div>

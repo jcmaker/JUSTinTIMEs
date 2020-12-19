@@ -19,3 +19,14 @@ body {
   background-color: white;
   font-family: "Times New Roman", Times, serif;
 }
+
+@media screen and (max-width: 530px) {
+  * {
+    margin: 0px;
+  }
+  body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #fafafa;
+  }
+}

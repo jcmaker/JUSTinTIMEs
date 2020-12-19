@@ -1,4 +1,6 @@
 import React from "react";
+import MenuIcon from "@material-ui/icons/Menu";
+
 // import dateAndTime from "js/date-and-time";
 
 const Header = ({ userObj }) => {
@@ -35,10 +37,21 @@ const Header = ({ userObj }) => {
   ];
   const month = textMonth[date.getMonth()];
   const day = textDay[date.getDay()];
+  // const sidebaropen = document.querySelector(".header__middle");
+
   return (
     <>
       <div className="header">
         <div className="header__top">
+          <div className="header--side-menu">
+            <MenuIcon
+              onClick={() => {
+                document
+                  .querySelector(".header__middle")
+                  .classList.toggle("open");
+              }}
+            />
+          </div>
           <div className="header__date">
             <h4 className="header__date_date">{`${day}, ${month} ${datedate}, ${year}`}</h4>
           </div>

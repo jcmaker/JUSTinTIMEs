@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import OnlyJustin from "./OnlyJustin";
 import JustinUID from "JustinUid";
 import { Avatar } from "@material-ui/core";
+import NavLink from "./NavLink";
 
 const Navigation = ({ userObj }) => {
   const isJustin = JustinUID;
@@ -22,24 +23,10 @@ const Navigation = ({ userObj }) => {
   };
 
   setInterval(UpdateCTime, 1000);
-
   return (
     <>
-      <div className="header">
-        <div className="header__middle">
-          <div className="header__link current-page">
-            <a href="/">Home</a>
-          </div>
-          <div className="header__link">
-            <Link to="/AboutJustin">About Me</Link>
-          </div>
-          <div className="header__link">
-            <Link to="/ContactJustin">Contact</Link>
-          </div>
-          <div className="header__link">
-            <Link to="/Projects">Projects</Link>
-          </div>
-        </div>
+      <div className="header-second">
+        <NavLink />
         <div className="header__bottom">
           <div className="clock">
             <h1 className="clock__time" on>
